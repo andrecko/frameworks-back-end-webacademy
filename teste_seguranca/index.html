@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button id="get">GET</button>
+        <button id="insert">INSERT</button>
+        <pre></pre>
+        <script>
+            function get() {
+                fetch("http://localhost:9000/atendimento/")
+                .then(resposta => resposta.json())
+                .then(dados => {
+                    let elemento = document.querySelector("pre");
+                    elemento.innerText = JSON.stringify(dados, undefined, 2)
+                })
+            }
+
+            function insert() {
+                fetch("http://localhost:9000/atendimento/", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "data": "2022-04-29T05:00:00",
+                        "hora": "17:30:00",
+                        "profissional": {
+                            "id": 1
+                        },
+                        "convenio": {
+                            "id": 1
+                        },
+                        "paciente": {
+                            "id": 2
+                        }
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
+                    }
+                })
+                .then(resposta => resposta.json())
+                .then(dados => {
+                    let elemento = document.querySelector("pre");
+                    elemento.innerText = JSON.stringify(dados, undefined, 2)
+                })
+            }
+
+            document.querySelector("button#get").addEventListener("click", get);
+            document.querySelector("button#insert").addEventListener("click", insert);
+        </script>
+    </body>
+</html>
