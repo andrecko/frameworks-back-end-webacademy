@@ -1,5 +1,5 @@
 # frameworks-back-end
-Repositório da disciplina Frameworks Back-end
+Spring Boot, JPA, Hibernate, ORM, API REST e CORS
 
 # Como executar a aplicação
 ```
